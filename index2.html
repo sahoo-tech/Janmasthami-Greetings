@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Janmashtami - Divine Blessings</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prata&family=Hind:wght@400;600&family=Kalam:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hind', sans-serif;
+            background: radial-gradient(circle at center, #1a0b3d 0%, #2d1b69 40%, #4a148c 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Enhanced Decorative Background Elements */
+        .decoration {
+            position: absolute;
+            opacity: 0.4;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .krishna-symbol {
+            width: 100px;
+            height: 100px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3C!-- Om Symbol --%3E%3Cpath d='M30 20 Q50 10 70 20 Q60 40 50 50 Q40 40 30 20' fill='%23ffd700'/%3E%3Cpath d='M25 50 Q35 45 45 50 Q40 60 35 65 Q30 60 25 50' fill='%23ffd700'/%3E%3Cpath d='M55 50 Q65 45 75 50 Q70 60 65 65 Q60 60 55 50' fill='%23ffd700'/%3E%3Cpath d='M45 65 Q50 60 55 65 Q50 75 45 65' fill='%23ffd700'/%3E%3Ccircle cx='70' cy='25' r='3' fill='%23ffd700'/%3E%3C/svg%3E") center/contain no-repeat;
+            top: 15%;
+            left: 8%;
+            animation: glow 3s ease-in-out infinite;
+        }
+
+        .conch {
+            width: 80px;
+            height: 120px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 120'%3E%3Cpath d='M40 10 Q20 20 25 50 Q30 80 40 110 Q50 80 55 50 Q60 20 40 10' fill='%23fff8dc' stroke='%23daa520' stroke-width='2'/%3E%3Cpath d='M35 30 Q40 25 45 30 Q40 35 35 30' fill='%23daa520'/%3E%3Cpath d='M30 50 Q40 45 50 50 Q40 55 30 50' fill='%23daa520'/%3E%3Cpath d='M32 70 Q40 65 48 70 Q40 75 32 70' fill='%23daa520'/%3E%3C/svg%3E") center/contain no-repeat;
+            top: 25%;
+            right: 10%;
+            animation: shimmer 4s ease-in-out infinite;
+        }
+
+        .chakra {
+            width: 90px;
+            height: 90px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 90 90'%3E%3Ccircle cx='45' cy='45' r='40' fill='none' stroke='%23ffd700' stroke-width='3'/%3E%3Cpath d='M45 5 L50 40 L45 45 L40 40 Z' fill='%23ffd700'/%3E%3Cpath d='M85 45 L50 50 L45 45 L50 40 Z' fill='%23ffd700'/%3E%3Cpath d='M45 85 L40 50 L45 45 L50 50 Z' fill='%23ffd700'/%3E%3Cpath d='M5 45 L40 40 L45 45 L40 50 Z' fill='%23ffd700'/%3E%3Ccircle cx='45' cy='45' r='8' fill='%23ff6b35'/%3E%3C/svg%3E") center/contain no-repeat;
+            bottom: 20%;
+            right: 15%;
+            animation: rotate 8s linear infinite;
+        }
+
+        .lotus-detailed {
+            width: 120px;
+            height: 120px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Cpath d='M60 20 Q30 40 60 70 Q90 40 60 20' fill='%23ff69b4' opacity='0.8'/%3E%3Cpath d='M20 60 Q40 30 70 60 Q40 90 20 60' fill='%23ff1493' opacity='0.8'/%3E%3Cpath d='M100 60 Q70 30 40 60 Q70 90 100 60' fill='%23ff1493' opacity='0.8'/%3E%3Cpath d='M60 100 Q30 70 60 40 Q90 70 60 100' fill='%23ff69b4' opacity='0.8'/%3E%3Cpath d='M35 35 Q60 20 85 35 Q70 60 60 65 Q50 60 35 35' fill='%23ffc0cb' opacity='0.9'/%3E%3Cpath d='M35 85 Q60 100 85 85 Q70 60 60 55 Q50 60 35 85' fill='%23ffc0cb' opacity='0.9'/%3E%3Ccircle cx='60' cy='60' r='12' fill='%23ffd700'/%3E%3C/svg%3E") center/contain no-repeat;
+            bottom: 25%;
+            left: 12%;
+            animation: bloom 6s ease-in-out infinite;
+        }
+
+        .kalash {
+            width: 70px;
+            height: 100px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 70 100'%3E%3Cpath d='M35 10 Q25 15 30 30 Q35 50 35 70 Q35 50 40 30 Q45 15 35 10' fill='%23daa520'/%3E%3Crect x='30' y='70' width='10' height='15' fill='%23daa520'/%3E%3Crect x='25' y='85' width='20' height='5' fill='%23daa520'/%3E%3Cpath d='M20 25 Q35 15 50 25 Q45 35 35 35 Q25 35 20 25' fill='%2332cd32'/%3E%3Cpath d='M35 5 L33 15 L37 15 Z' fill='%2332cd32'/%3E%3C/svg%3E") center/contain no-repeat;
+            top: 35%;
+            left: 5%;
+            animation: sway 5s ease-in-out infinite;
+        }
+
+        .peacock {
+            width: 150px;
+            height: 100px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 100'%3E%3Cpath d='M20 60 Q40 40 80 50 Q100 45 120 55 Q110 70 90 65 Q60 70 40 75 Q25 70 20 60' fill='%23006400'/%3E%3Cpath d='M80 50 Q85 30 90 45 Q95 25 100 40 Q105 20 110 35 Q115 15 120 30' fill='%234169e1'/%3E%3Ccircle cx='88' cy='35' r='4' fill='%23ff6b35'/%3E%3Ccircle cx='98' cy='30' r='4' fill='%23ff6b35'/%3E%3Ccircle cx='108' cy='25' r='4' fill='%23ff6b35'/%3E%3Cpath d='M120 55 Q130 50 140 60 Q135 70 125 65' fill='%23ff6b35'/%3E%3Ccircle cx='125' cy='58' r='2' fill='%23000'/%3E%3C/svg%3E") center/contain no-repeat;
+            top: 10%;
+            right: 20%;
+            animation: dance 7s ease-in-out infinite;
+        }
+
+        @keyframes sway {
+            0%, 100% { transform: rotate(-3deg); }
+            50% { transform: rotate(3deg); }
+        }
+
+        @keyframes shimmer {
+            0%, 100% { opacity: 0.4; filter: brightness(1); }
+            50% { opacity: 0.7; filter: brightness(1.3); }
+        }
+
+        @keyframes bloom {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.1) rotate(5deg); }
+        }
+
+        @keyframes glow {
+            0%, 100% { filter: drop-shadow(0 0 5px #ffd700); }
+            50% { filter: drop-shadow(0 0 15px #ffd700); }
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes dance {
+            0%, 100% { transform: translateY(0px) rotate(-2deg); }
+            33% { transform: translateY(-10px) rotate(1deg); }
+            66% { transform: translateY(-5px) rotate(-1deg); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        /* Video Container */
+        .video-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            transition: opacity 1s ease-out;
+            cursor: pointer;
+        }
+
+        .video-container.fade-out {
+            opacity: 0;
+        }
+
+        video {
+            max-width: 80%;
+            max-height: 80%;
+            border-radius: 15px;
+            box-shadow: 0 0 40px rgba(255, 215, 0, 0.6);
+            pointer-events: none;
+        }
+
+        .skip-video {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-family: 'Hind', sans-serif;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+            z-index: 1001;
+        }
+
+        .skip-video:hover {
+            background: rgba(255, 255, 255, 1);
+            transform: translateY(-2px);
+        }
+
+        .play-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 215, 0, 0.9);
+            color: #333;
+            border: none;
+            padding: 20px 30px;
+            border-radius: 50px;
+            font-family: 'Kalam', cursive;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            z-index: 1002;
+            display: none;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .play-video:hover {
+            background: rgba(255, 215, 0, 1);
+            transform: translate(-50%, -50%) scale(1.05);
+        }
+
+        /* Modal */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+            transition: opacity 0.5s ease-out;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #fff9c4 0%, #fff 100%);
+            padding: 50px 40px;
+            border-radius: 25px;
+            text-align: center;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
+            max-width: 450px;
+            width: 90%;
+            border: 3px solid #ffd700;
+        }
+
+        .modal h2 {
+            font-family: 'Kalam', cursive;
+            color: #8b4513;
+            margin-bottom: 15px;
+            font-size: 2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .modal p {
+            font-family: 'Hind', sans-serif;
+            color: #8b4513;
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+        }
+
+        .modal input {
+            width: 100%;
+            padding: 18px;
+            margin: 20px 0;
+            border: 3px solid #daa520;
+            border-radius: 15px;
+            font-size: 18px;
+            font-family: 'Hind', sans-serif;
+            transition: all 0.3s;
+            background: #fffef7;
+        }
+
+        .modal input:focus {
+            outline: none;
+            border-color: #ff6b35;
+            box-shadow: 0 0 10px rgba(255, 107, 53, 0.3);
+        }
+
+        .modal button {
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            color: white;
+            border: none;
+            padding: 18px 35px;
+            border-radius: 30px;
+            font-size: 18px;
+            font-family: 'Kalam', cursive;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(255, 107, 53, 0.4);
+        }
+
+        .modal button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.6);
+        }
+
+        /* Main Content */
+        .main-content {
+            position: relative;
+            z-index: 10;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* Canvas for particle animation */
+        #greetingCanvas {
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            margin: 20px 0;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Audio Controls */
+        .audio-controls {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+        }
+
+        .audio-button {
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            border: none;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            border: 2px solid #ff6b35;
+        }
+
+        .audio-button:hover {
+            background: linear-gradient(135deg, #ffed4e 0%, #ffd700 100%);
+            transform: scale(1.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .modal-content {
+                padding: 40px 25px;
+                margin: 20px;
+            }
+            
+            .modal h2 {
+                font-size: 1.6rem;
+            }
+            
+            video {
+                max-width: 95%;
+                max-height: 70%;
+            }
+            
+            .decoration {
+                opacity: 0.3;
+            }
+            
+            .krishna-symbol, .conch, .chakra, .lotus-detailed, .kalash {
+                transform: scale(0.7);
+            }
+            
+            .peacock {
+                transform: scale(0.6);
+            }
+            
+            .audio-button {
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+        }
+
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Enhanced Decorative Elements -->
+    <div class="decoration krishna-symbol"></div>
+    <div class="decoration conch"></div>
+    <div class="decoration chakra"></div>
+    <div class="decoration lotus-detailed"></div>
+    <div class="decoration kalash"></div>
+    <div class="decoration peacock"></div>
+
+    <!-- Audio Controls -->
+    <div class="audio-controls">
+        <button class="audio-button" id="audioToggle">🎵</button>
+    </div>
+
+    <!-- Background Audio -->
+    <audio id="bgAudio" loop preload="auto" autoplay muted>
+        <source src="audio/krishna-flute.mp3" type="audio/mpeg">
+        <source src="audio/janmashtami-song.mp3" type="audio/mpeg">
+        <source src="audio/krishna-flute.ogg" type="audio/ogg">
+        <source src="audio/janmashtami-song.ogg" type="audio/ogg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Video Container -->
+    <div class="video-container" id="videoContainer">
+        <video id="introVideo" autoplay preload="auto" controls>
+            <source src="video/janmashtami-intro.mp4" type="video/mp4">
+            <source src="video/janmashtami-intro.webm" type="video/webm">
+            Your browser does not support the video tag.
+        </video>
+        <button class="skip-video" id="skipVideo">Skip Intro ⏭️</button>
+        <button class="play-video" id="playVideo">▶️ Play Video</button>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="nameModal">
+        <div class="modal-content">
+            <h2>🕉️ Jai Shri Krishna 🕉️</h2>
+            <p>Enter your name for a special surprise!</p>
+            <input type="text" id="nameInput" placeholder="Enter your name here..." maxlength="20">
+            <br>
+            <button onclick="showGreeting()">🎁 Get Surprise 🎁</button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content hidden" id="mainContent">
+        <canvas id="greetingCanvas" width="1200" height="600"></canvas>
+    </div>
+
+    <script>
+        // Enhanced Audio control with immediate auto-start
+        const audio = document.getElementById('bgAudio');
+        const audioToggle = document.getElementById('audioToggle');
+        let isPlaying = false;
+        let audioStarted = false;
+
+        // Auto-start audio function
+        function startBackgroundMusic() {
+            if (audioStarted) return; // Prevent multiple starts
+            
+            audio.currentTime = 0;
+            audio.volume = 0.7; // Set comfortable volume
+            audio.muted = false; // Unmute the audio
+            
+            // Try to play audio
+            const playPromise = audio.play();
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    isPlaying = true;
+                    audioStarted = true;
+                    audioToggle.textContent = '🎵';
+                    audioToggle.style.opacity = '1';
+                    audioToggle.style.animation = 'none';
+                    console.log('Background music started successfully');
+                }).catch((error) => {
+                    console.log('Auto-play prevented by browser:', error);
+                    // Show a visual indicator that user can click to start music
+                    audioToggle.style.animation = 'pulse 1s infinite';
+                    audioToggle.title = 'Click to start music';
+                });
+            }
+        }
+
+        // Audio toggle functionality
+        audioToggle.addEventListener('click', () => {
+            if (isPlaying) {
+                audio.pause();
+                audioToggle.textContent = '🔇';
+                audioToggle.style.opacity = '0.7';
+                audioToggle.style.animation = 'none';
+                audioToggle.title = 'Click to play music';
+                isPlaying = false;
+            } else {
+                audio.muted = false; // Ensure audio is unmuted
+                audio.volume = 0.7; // Set volume
+                const playPromise = audio.play();
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        audioToggle.textContent = '🎵';
+                        audioToggle.style.opacity = '1';
+                        audioToggle.style.animation = 'none';
+                        audioToggle.title = 'Click to pause music';
+                        isPlaying = true;
+                        audioStarted = true;
+                    }).catch((error) => {
+                        console.log('Audio play failed:', error);
+                    });
+                }
+            }
+        });
+
+        // Multiple attempts to start music immediately
+        // 1. Try immediately when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(startBackgroundMusic, 100);
+        });
+
+        // 2. Try when page is fully loaded
+        window.addEventListener('load', () => {
+            setTimeout(startBackgroundMusic, 200);
+        });
+
+        // 3. Try on any user interaction (click, touch, keypress)
+        function tryStartMusic() {
+            if (!audioStarted) {
+                startBackgroundMusic();
+            }
+        }
+
+        document.addEventListener('click', tryStartMusic, { once: true });
+        document.addEventListener('touchstart', tryStartMusic, { once: true });
+        document.addEventListener('keydown', tryStartMusic, { once: true });
+
+        // 4. Try when video container is visible
+        setTimeout(() => {
+            if (!audioStarted) {
+                startBackgroundMusic();
+            }
+        }, 500);
+
+        // Video handling
+        const video = document.getElementById('introVideo');
+        const videoContainer = document.getElementById('videoContainer');
+        const nameModal = document.getElementById('nameModal');
+        const skipButton = document.getElementById('skipVideo');
+        const playButton = document.getElementById('playVideo');
+
+        // Video event handlers
+        video.addEventListener('loadeddata', () => {
+            console.log('Video loaded successfully');
+            // Set video volume
+            video.volume = 0.8;
+        });
+
+        video.addEventListener('canplay', () => {
+            // Try to play video with audio
+            const playPromise = video.play();
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    // Video started successfully
+                    playButton.style.display = 'none';
+                    // Pause background music when video starts playing
+                    if (isPlaying) {
+                        audio.pause();
+                        console.log('Background music paused for video');
+                    }
+                }).catch((error) => {
+                    console.log('Video autoplay failed:', error);
+                    // Show play button if autoplay fails
+                    playButton.style.display = 'block';
+                });
+            }
+        });
+
+        video.addEventListener('play', () => {
+            console.log('Video started playing');
+            // Pause background music while video is playing
+            if (isPlaying) {
+                audio.pause();
+            }
+        });
+
+        video.addEventListener('error', (e) => {
+            console.error('Video loading error:', e);
+            // If video fails to load, skip to modal after 2 seconds
+            setTimeout(() => {
+                videoContainer.classList.add('fade-out');
+                setTimeout(() => {
+                    videoContainer.style.display = 'none';
+                    nameModal.style.display = 'flex';
+                    // Resume background music
+                    if (audioStarted && !isPlaying) {
+                        audio.play();
+                        isPlaying = true;
+                    }
+                }, 1000);
+            }, 2000);
+        });
+
+        video.addEventListener('ended', () => {
+            console.log('Video ended naturally');
+            videoContainer.classList.add('fade-out');
+            
+            // Resume or start background music when video ends
+            if (audioStarted && !isPlaying) {
+                audio.play();
+                isPlaying = true;
+                audioToggle.textContent = '🎵';
+                audioToggle.style.opacity = '1';
+                console.log('Background music resumed after video');
+            } else if (!audioStarted) {
+                startBackgroundMusic();
+            }
+            
+            setTimeout(() => {
+                videoContainer.style.display = 'none';
+                nameModal.style.display = 'flex';
+                // Ensure background music is playing
+                if (audioStarted && !isPlaying) {
+                    setTimeout(() => {
+                        audio.play();
+                        isPlaying = true;
+                    }, 100);
+                }
+            }, 1000);
+        });
+
+        // Play video functionality
+        playButton.addEventListener('click', (e) => {
+            e.stopPropagation();
+            console.log('Play button clicked');
+            video.play().then(() => {
+                playButton.style.display = 'none';
+                // Pause background music when video starts
+                if (isPlaying) {
+                    audio.pause();
+                    console.log('Background music paused for video');
+                }
+            }).catch((error) => {
+                console.error('Failed to play video:', error);
+            });
+        });
+
+        // Skip video functionality
+        skipButton.addEventListener('click', (e) => {
+            e.stopPropagation();
+            console.log('Video skipped by user');
+            video.pause(); // Pause video first
+            video.dispatchEvent(new Event('ended'));
+        });
+
+        // Also allow clicking anywhere on video container to skip
+        videoContainer.addEventListener('click', (e) => {
+            if (e.target === videoContainer) {
+                console.log('Video skipped by clicking container');
+                video.pause(); // Pause video first
+                video.dispatchEvent(new Event('ended'));
+            }
+        });
+
+        // Fallback: If video doesn't end naturally within 30 seconds, proceed to modal
+        setTimeout(() => {
+            if (videoContainer.style.display !== 'none') {
+                console.log('Video timeout - proceeding to modal');
+                video.dispatchEvent(new Event('ended'));
+            }
+        }, 30000);
+
+        // Fast and smooth Particle system
+        class Particle {
+            constructor(x, y, targetX, targetY, color) {
+                this.startX = x;
+                this.startY = y;
+                this.x = x;
+                this.y = y;
+                this.targetX = targetX;
+                this.targetY = targetY;
+                this.color = color;
+                this.progress = 0;
+                // Much faster speed - 3x to 5x faster than before
+                this.speed = 0.12 + Math.random() * 0.08; // 0.12 to 0.20
+                this.size = 1.8 + Math.random() * 1.2;
+                this.arrived = false;
+                
+                // Add velocity for smoother movement
+                this.vx = 0;
+                this.vy = 0;
+                this.friction = 0.85;
+            }
+
+            update() {
+                if (this.progress < 1) {
+                    this.progress += this.speed;
+                    
+                    // Use faster easing function
+                    const easeProgress = this.easeOutQuart(Math.min(this.progress, 1));
+                    
+                    // Calculate target position
+                    const targetX = this.startX + (this.targetX - this.startX) * easeProgress;
+                    const targetY = this.startY + (this.targetY - this.startY) * easeProgress;
+                    
+                    // Add velocity-based movement for smoothness
+                    this.vx += (targetX - this.x) * 0.15;
+                    this.vy += (targetY - this.y) * 0.15;
+                    
+                    this.vx *= this.friction;
+                    this.vy *= this.friction;
+                    
+                    this.x += this.vx;
+                    this.y += this.vy;
+                    
+                    // Mark as arrived much earlier for faster text formation
+                    if (this.progress >= 0.7) {
+                        this.arrived = true;
+                    }
+                }
+            }
+
+            // Faster easing function
+            easeOutQuart(t) {
+                return 1 - Math.pow(1 - t, 4);
+            }
+
+            draw(ctx) {
+                // Add slight glow effect for better visibility
+                ctx.shadowColor = this.color;
+                ctx.shadowBlur = 2;
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.shadowBlur = 0;
+            }
+        }
+
+        function showGreeting() {
+            const name = document.getElementById('nameInput').value.trim();
+            if (!name) {
+                alert('Please enter your name!');
+                return;
+            }
+
+            nameModal.style.opacity = '0';
+            setTimeout(() => {
+                nameModal.style.display = 'none';
+                document.getElementById('mainContent').classList.remove('hidden');
+                startParticleAnimation(name);
+            }, 500);
+        }
+
+        function startParticleAnimation(userName) {
+            const canvas = document.getElementById('greetingCanvas');
+            const ctx = canvas.getContext('2d');
+            
+            // Improved responsive canvas sizing
+            const updateCanvasSize = () => {
+                // Make canvas larger to accommodate longer names
+                canvas.width = Math.min(1200, window.innerWidth - 20);
+                canvas.height = Math.min(600, window.innerHeight * 0.8);
+                canvas.style.width = canvas.width + 'px';
+                canvas.style.height = canvas.height + 'px';
+                
+                // Ensure minimum size for readability
+                if (canvas.width < 800) canvas.width = 800;
+                if (canvas.height < 400) canvas.height = 400;
+            };
+            
+            updateCanvasSize();
+            window.addEventListener('resize', updateCanvasSize);
+
+            const particles = [];
+            const colors = ['#ff6b35', '#ffd700', '#ff1493', '#00ced1', '#32cd32', '#ff69b4', '#4169e1'];
+
+            // Text to animate
+            const line1 = `Happy Janmashtami, ${userName}!`;
+            const line2 = "From Sayantan Sahoo";
+
+            // Enhanced function to get text pixels with proper text fitting
+            function getTextPixels(text, fontSize, yOffset) {
+                const tempCanvas = document.createElement('canvas');
+                const tempCtx = tempCanvas.getContext('2d');
+                tempCanvas.width = canvas.width;
+                tempCanvas.height = canvas.height;
+                
+                // Set font and measure text
+                tempCtx.font = `bold ${fontSize}px Kalam, cursive`;
+                const textMetrics = tempCtx.measureText(text);
+                const textWidth = textMetrics.width;
+                
+                // Adjust font size if text is too wide
+                let adjustedFontSize = fontSize;
+                if (textWidth > canvas.width * 0.9) {
+                    adjustedFontSize = fontSize * (canvas.width * 0.9) / textWidth;
+                    tempCtx.font = `bold ${adjustedFontSize}px Kalam, cursive`;
+                }
+                
+                tempCtx.fillStyle = 'white';
+                tempCtx.textAlign = 'center';
+                tempCtx.textBaseline = 'middle';
+                tempCtx.fillText(text, canvas.width / 2, yOffset);
+                
+                const imageData = tempCtx.getImageData(0, 0, canvas.width, canvas.height);
+                const pixels = [];
+                
+                // Optimized pixel sampling for better performance and smooth animation
+                for (let y = 0; y < canvas.height; y += 2) {
+                    for (let x = 0; x < canvas.width; x += 2) {
+                        const index = (y * canvas.width + x) * 4;
+                        if (imageData.data[index + 3] > 128) {
+                            pixels.push({ x, y });
+                        }
+                    }
+                }
+                
+                return pixels;
+            }
+
+            // Create particles for first line with improved font sizing
+            let fontSize1 = Math.max(48, Math.min(72, canvas.width / 15));
+            let fontSize2 = Math.max(36, Math.min(48, canvas.width / 25));
+            
+            // Measure and adjust font size for long names
+            ctx.font = `bold ${fontSize1}px Kalam, cursive`;
+            const line1Width = ctx.measureText(line1).width;
+            if (line1Width > canvas.width * 0.9) {
+                fontSize1 = fontSize1 * (canvas.width * 0.9) / line1Width;
+            }
+            
+            const line1Pixels = getTextPixels(line1, fontSize1, canvas.height / 2 - 60);
+            
+            line1Pixels.forEach(pixel => {
+                const startX = Math.random() * canvas.width;
+                const startY = Math.random() * canvas.height;
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                particles.push(new Particle(startX, startY, pixel.x, pixel.y, color));
+            });
+
+            // Create particles for second line (faster delay) with improved sizing
+            setTimeout(() => {
+                // Measure and adjust font size for second line
+                ctx.font = `bold ${fontSize2}px Kalam, cursive`;
+                const line2Width = ctx.measureText(line2).width;
+                if (line2Width > canvas.width * 0.9) {
+                    fontSize2 = fontSize2 * (canvas.width * 0.9) / line2Width;
+                }
+                
+                const line2Pixels = getTextPixels(line2, fontSize2, canvas.height / 2 + 60);
+                
+                                line2Pixels.forEach(pixel => {
+                    const startX = Math.random() * canvas.width;
+                    const startY = Math.random() * canvas.height;
+                    const color = colors[Math.floor(Math.random() * colors.length)];
+                    particles.push(new Particle(startX, startY, pixel.x, pixel.y, color));
+                });
+            }, 400);
+
+            // Animation loop with improved rendering
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                // Add subtle background pattern
+                ctx.fillStyle = 'rgba(255, 215, 0, 0.02)';
+                for (let i = 0; i < canvas.width; i += 20) {
+                    for (let j = 0; j < canvas.height; j += 20) {
+                        if ((i + j) % 40 === 0) {
+                            ctx.fillRect(i, j, 2, 2);
+                        }
+                    }
+                }
+                
+                // Update and draw all particles
+                particles.forEach(particle => {
+                    particle.update();
+                    particle.draw(ctx);
+                });
+                
+                // Check if first line animation is mostly complete, then show solid text overlay
+                const firstLineParticles = particles.slice(0, line1Pixels.length);
+                const arrivedCount = firstLineParticles.filter(p => p.arrived).length;
+                
+                if (arrivedCount > firstLineParticles.length * 0.5) {
+                    // Draw solid text overlay for better readability
+                    ctx.font = `bold ${fontSize1}px Kalam, cursive`;
+                    ctx.fillStyle = 'rgba(255, 255, 255, 0.95)';
+                    ctx.strokeStyle = 'rgba(255, 107, 53, 0.9)';
+                    ctx.lineWidth = 3;
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'middle';
+                    ctx.strokeText(line1, canvas.width / 2, canvas.height / 2 - 60);
+                    ctx.fillText(line1, canvas.width / 2, canvas.height / 2 - 60);
+                }
+                
+                // Same for second line
+                if (particles.length > line1Pixels.length) {
+                    const secondLineParticles = particles.slice(line1Pixels.length);
+                    const arrivedCount2 = secondLineParticles.filter(p => p.arrived).length;
+                    
+                    if (arrivedCount2 > secondLineParticles.length * 0.5) {
+                        ctx.font = `bold ${fontSize2}px Kalam, cursive`;
+                        ctx.fillStyle = 'rgba(255, 215, 0, 0.95)';
+                        ctx.strokeStyle = 'rgba(255, 20, 147, 0.9)';
+                        ctx.lineWidth = 2;
+                        ctx.textAlign = 'center';
+                        ctx.textBaseline = 'middle';
+                        ctx.strokeText(line2, canvas.width / 2, canvas.height / 2 + 60);
+                        ctx.fillText(line2, canvas.width / 2, canvas.height / 2 + 60);
+                    }
+                }
+                
+                requestAnimationFrame(animate);
+            }
+            
+            animate();
+
+            // Add floating blessing words after animation completes
+            setTimeout(() => {
+                addFloatingBlessings();
+            }, 8000);
+        }
+
+        // Add floating blessing words
+        function addFloatingBlessings() {
+            const canvas = document.getElementById('greetingCanvas');
+            const ctx = canvas.getContext('2d');
+            const blessings = ['🙏', '🕉️', '🪷', '✨', '🎭', '🦚', '🔱'];
+            
+            setInterval(() => {
+                const blessing = blessings[Math.floor(Math.random() * blessings.length)];
+                const x = Math.random() * canvas.width;
+                const y = canvas.height;
+                
+                let opacity = 1;
+                let currentY = y;
+                
+                const floatAnimation = setInterval(() => {
+                    ctx.save();
+                    ctx.globalAlpha = opacity;
+                    ctx.font = '30px serif';
+                    ctx.textAlign = 'center';
+                    ctx.fillText(blessing, x, currentY);
+                    ctx.restore();
+                    
+                    currentY -= 2;
+                    opacity -= 0.02;
+                    
+                    if (opacity <= 0 || currentY < 0) {
+                        clearInterval(floatAnimation);
+                    }
+                }, 50);
+            }, 2000);
+        }
+
+        // Handle Enter key in name input
+        document.getElementById('nameInput').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                showGreeting();
+            }
+        });
+
+        // Add sparkle effect to decorations
+        function addSparkleEffect() {
+            const decorations = document.querySelectorAll('.decoration');
+            decorations.forEach(decoration => {
+                setInterval(() => {
+                    decoration.style.filter = 'brightness(1.5) drop-shadow(0 0 10px gold)';
+                    setTimeout(() => {
+                        decoration.style.filter = 'brightness(1)';
+                    }, 500);
+                }, Math.random() * 5000 + 3000);
+            });
+        }
+
+        // Initialize sparkle effects
+        addSparkleEffect();
+
+        // Add subtle cursor trail effect
+        let cursorTrail = [];
+        document.addEventListener('mousemove', (e) => {
+            cursorTrail.push({
+                x: e.clientX,
+                y: e.clientY,
+                time: Date.now()
+            });
+            
+            // Keep only recent trail points
+            cursorTrail = cursorTrail.filter(point => Date.now() - point.time < 1000);
+            
+            // Create temporary sparkle at cursor position occasionally
+            if (Math.random() < 0.1) {
+                const sparkle = document.createElement('div');
+                sparkle.innerHTML = '✨';
+                sparkle.style.position = 'fixed';
+                sparkle.style.left = e.clientX + 'px';
+                sparkle.style.top = e.clientY + 'px';
+                sparkle.style.pointerEvents = 'none';
+                sparkle.style.fontSize = '12px';
+                sparkle.style.opacity = '0.7';
+                sparkle.style.zIndex = '1000';
+                sparkle.style.animation = 'fadeOut 1s ease-out forwards';
+                
+                document.body.appendChild(sparkle);
+                
+                setTimeout(() => {
+                    if (sparkle.parentNode) {
+                        sparkle.parentNode.removeChild(sparkle);
+                    }
+                }, 1000);
+            }
+        });
+
+        // Add fade out animation for sparkles
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeOut {
+                0% { opacity: 0.7; transform: scale(1); }
+                100% { opacity: 0; transform: scale(0.3) translateY(-20px); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
