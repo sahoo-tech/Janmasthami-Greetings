@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Happy Janmashtami - Divine Blessings</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,6 +20,13 @@
             min-height: 100vh;
             overflow-x: hidden;
             position: relative;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            touch-action: manipulation;
         }
 
         /* Enhanced Decorative Background Elements */
@@ -292,6 +299,9 @@
             margin: 20px 0;
             border: 2px solid rgba(255, 215, 0, 0.3);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            max-width: 100%;
+            height: auto;
+            display: block;
         }
 
         /* Audio Controls */
@@ -353,6 +363,35 @@
                 height: 50px;
                 font-size: 20px;
             }
+            
+            /* Mobile Canvas Optimization */
+            #greetingCanvas {
+                width: 100% !important;
+                max-width: calc(100vw - 20px) !important;
+                height: auto !important;
+                min-height: 300px !important;
+                margin: 10px 0 !important;
+                border-radius: 15px !important;
+            }
+            
+            .main-content {
+                padding: 10px !important;
+            }
+        }
+        
+        /* Extra small devices */
+        @media (max-width: 480px) {
+            #greetingCanvas {
+                width: 100% !important;
+                max-width: calc(100vw - 10px) !important;
+                min-height: 250px !important;
+                margin: 5px 0 !important;
+                border-radius: 10px !important;
+            }
+            
+            .main-content {
+                padding: 5px !important;
+            }
         }
 
         .hidden {
@@ -407,7 +446,7 @@
 
     <!-- Main Content -->
     <div class="main-content hidden" id="mainContent">
-        <canvas id="greetingCanvas" width="1200" height="600"></canvas>
+        <canvas id="greetingCanvas"></canvas>
     </div>
 
     <script>
@@ -715,21 +754,47 @@
             const canvas = document.getElementById('greetingCanvas');
             const ctx = canvas.getContext('2d');
             
-            // Improved responsive canvas sizing
+            // Enhanced mobile-responsive canvas sizing
             const updateCanvasSize = () => {
-                // Make canvas larger to accommodate longer names
-                canvas.width = Math.min(1200, window.innerWidth - 20);
-                canvas.height = Math.min(600, window.innerHeight * 0.8);
+                const isMobile = window.innerWidth <= 768;
+                const isSmallMobile = window.innerWidth <= 480;
+                
+                if (isSmallMobile) {
+                    // Extra small mobile devices
+                    canvas.width = Math.min(400, window.innerWidth - 10);
+                    canvas.height = Math.min(300, window.innerHeight * 0.6);
+                } else if (isMobile) {
+                    // Regular mobile devices
+                    canvas.width = Math.min(600, window.innerWidth - 20);
+                    canvas.height = Math.min(400, window.innerHeight * 0.7);
+                } else {
+                    // Desktop and tablet
+                    canvas.width = Math.min(1200, window.innerWidth - 40);
+                    canvas.height = Math.min(600, window.innerHeight * 0.8);
+                }
+                
+                // Set CSS dimensions to match canvas dimensions for proper scaling
                 canvas.style.width = canvas.width + 'px';
                 canvas.style.height = canvas.height + 'px';
                 
-                // Ensure minimum size for readability
-                if (canvas.width < 800) canvas.width = 800;
-                if (canvas.height < 400) canvas.height = 400;
+                // Ensure minimum readable size
+                if (canvas.width < 300) canvas.width = 300;
+                if (canvas.height < 200) canvas.height = 200;
+                
+                // Update CSS for mobile responsiveness
+                if (isMobile) {
+                    canvas.style.maxWidth = '100%';
+                    canvas.style.height = 'auto';
+                }
             };
             
             updateCanvasSize();
             window.addEventListener('resize', updateCanvasSize);
+            
+            // Handle orientation changes on mobile
+            window.addEventListener('orientationchange', () => {
+                setTimeout(updateCanvasSize, 100);
+            });
 
             const particles = [];
             const colors = ['#ff6b35', '#ffd700', '#ff1493', '#00ced1', '#32cd32', '#ff69b4', '#4169e1'];
@@ -765,9 +830,11 @@
                 const imageData = tempCtx.getImageData(0, 0, canvas.width, canvas.height);
                 const pixels = [];
                 
-                // Optimized pixel sampling for better performance and smooth animation
-                for (let y = 0; y < canvas.height; y += 2) {
-                    for (let x = 0; x < canvas.width; x += 2) {
+                // Optimized pixel sampling with mobile-specific density
+                const pixelStep = isMobile ? (isSmallMobile ? 4 : 3) : 2;
+                
+                for (let y = 0; y < canvas.height; y += pixelStep) {
+                    for (let x = 0; x < canvas.width; x += pixelStep) {
                         const index = (y * canvas.width + x) * 4;
                         if (imageData.data[index + 3] > 128) {
                             pixels.push({ x, y });
@@ -778,9 +845,22 @@
                 return pixels;
             }
 
-            // Create particles for first line with improved font sizing
-            let fontSize1 = Math.max(48, Math.min(72, canvas.width / 15));
-            let fontSize2 = Math.max(36, Math.min(48, canvas.width / 25));
+            // Create particles for first line with mobile-responsive font sizing
+            const isMobile = window.innerWidth <= 768;
+            const isSmallMobile = window.innerWidth <= 480;
+            
+            let fontSize1, fontSize2;
+            
+            if (isSmallMobile) {
+                fontSize1 = Math.max(20, Math.min(32, canvas.width / 12));
+                fontSize2 = Math.max(16, Math.min(24, canvas.width / 18));
+            } else if (isMobile) {
+                fontSize1 = Math.max(28, Math.min(42, canvas.width / 14));
+                fontSize2 = Math.max(20, Math.min(32, canvas.width / 20));
+            } else {
+                fontSize1 = Math.max(48, Math.min(72, canvas.width / 15));
+                fontSize2 = Math.max(36, Math.min(48, canvas.width / 25));
+            }
             
             // Measure and adjust font size for long names
             ctx.font = `bold ${fontSize1}px Kalam, cursive`;
