@@ -1,0 +1,8 @@
+.git
+.gitignore
+README.md
+.qodo
+.zencoder
+*.log
+.DS_Store
+Thumbs.db
